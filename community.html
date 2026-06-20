@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community — ConTexture</title>
+  <meta name="description" content="The ConTexture community — ask questions, share tips, and connect with other writers.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    .coming-soon-card {
+      background: #fff;
+      border: 1px solid var(--cream-dark);
+      border-radius: 16px;
+      padding: 56px 48px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .coming-soon-icon {
+      font-size: 3.5rem;
+      margin-bottom: 24px;
+    }
+    .coming-soon-card h2 {
+      margin-bottom: 16px;
+      color: var(--brown-rich);
+    }
+    .coming-soon-card p {
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+    .community-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .community-link-card {
+      background: #fff;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .community-link-card:hover {
+      box-shadow: 0 6px 24px rgba(42,21,6,0.1);
+      transform: translateY(-2px);
+    }
+    .community-link-card .cl-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .community-link-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: var(--brown-rich);
+    }
+    .community-link-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .community-link-card a.card-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--amber);
+    }
+    .notify-form {
+      max-width: 480px;
+      margin: 48px auto 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .notify-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 11px 16px;
+      border-radius: 8px;
+      border: 1.5px solid var(--cream-dark);
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: border-color 0.2s;
+    }
+    .notify-form input:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+    .notify-form button {
+      background: var(--amber);
+      color: #fff;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .notify-form button:hover { background: var(--amber-light); }
+    .notify-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
+    <ul class="nav-links">
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <a class="nav-cta" href="index.html#download">Download</a>
+    <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Community</h1>
+    <p>A place for ConTexture users to ask questions, share tips, and connect.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="coming-soon-card">
+      <div class="coming-soon-icon">🏗️</div>
+      <h2>Forums coming soon</h2>
+      <p>A dedicated ConTexture community forum is on the way — a place to ask questions, share writing workflows, request features, and connect with other users. We're building it properly rather than rushing it.</p>
+      <p style="margin-top:16px">Leave your email below and we'll let you know the moment it opens.</p>
+
+      <form class="notify-form" onsubmit="handleNotify(event)">
+        <input type="email" placeholder="your@email.com" required id="notify-email">
+        <button type="submit">Notify me</button>
+      </form>
+      <p class="notify-note">No spam. One email when the forum opens, that's it.</p>
+    </div>
+
+    <div class="community-links">
+      <div class="community-link-card">
+        <span class="cl-icon">💬</span>
+        <div>
+          <h3>Support &amp; questions</h3>
+          <p>Have a question about how something works, a bug to report, or a feature you'd like to see? The support page goes straight to the developer.</p>
+          <a class="card-link" href="support.html">Go to support →</a>
+        </div>
+      </div>
+
+      <div class="community-link-card">
+        <span class="cl-icon">✈️</span>
+        <div>
+          <h3>TestFlight beta</h3>
+          <p>ConTexture is currently in beta on TestFlight. Join to get early access to new features and help shape the app before public release.</p>
+          <a class="card-link" href="index.html#download">Join the beta →</a>
+        </div>
+      </div>
+
+      <div class="community-link-card">
+        <span class="cl-icon">📝</span>
+        <div>
+          <h3>Release notes &amp; updates</h3>
+          <p>Every update includes detailed release notes. Follow along on the blog for longer write-ups on what's new and what's next.</p>
+          <a class="card-link" href="blog/index.html">Read the blog →</a>
+        </div>
+      </div>
+
+      <div class="community-link-card">
+        <span class="cl-icon">🗳️</span>
+        <div>
+          <h3>Feature requests</h3>
+          <p>Have an idea for something ConTexture should do? Send it through — feature requests genuinely influence the roadmap.</p>
+          <a class="card-link" href="support.html">Send a request →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
+      <p>A long-form writing app for iOS, iPadOS, and macOS.</p>
+    </div>
+    <div>
+      <h4>App</h4>
+      <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="support.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Timothy Frey. All rights reserved.</span>
+    <span>Made in the Netherlands 🇳🇱</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function handleNotify(e) {
+  e.preventDefault();
+  const email = document.getElementById('notify-email').value;
+  window.location.href = `mailto:rygelmir@outlook.com?subject=Notify me: ConTexture Forums&body=Please notify me when the ConTexture community forum launches.%0A%0AEmail: ${email}`;
+}
+</script>
+</body>
+</html>
