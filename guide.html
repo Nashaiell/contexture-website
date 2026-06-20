@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide — ConTexture</title>
+  <meta name="description" content="A guide to ConTexture's key features — drawing board, @mentions, wiki links, daily notes, side-by-side view, footnotes, and export.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    .guide-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .guide-section:last-of-type { border-bottom: none; }
+    .guide-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .guide-icon {
+      width: 52px; height: 52px;
+      background: rgba(212,105,30,0.1);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .guide-header h2 {
+      font-size: 1.6rem;
+      margin: 0;
+      color: var(--brown-rich);
+    }
+    .guide-body p { color: var(--text-muted); margin-bottom: 1rem; }
+    .guide-body p:last-child { margin-bottom: 0; }
+    .guide-tip {
+      background: rgba(212,105,30,0.07);
+      border-left: 3px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+    .guide-tip strong { color: var(--brown-rich); }
+    .steps { list-style: none; padding: 0; counter-reset: steps; }
+    .steps li {
+      counter-increment: steps;
+      padding: 10px 0 10px 44px;
+      position: relative;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(steps);
+      position: absolute; left: 0; top: 10px;
+      width: 28px; height: 28px;
+      background: var(--amber);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; font-weight: bold;
+      line-height: 28px; text-align: center;
+    }
+    .guide-nav {
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 56px;
+    }
+    .guide-nav h3 { margin-bottom: 16px; font-size: 1rem; color: var(--brown-rich); }
+    .guide-nav-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      list-style: none;
+    }
+    .guide-nav-links a {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--brown-rich); font-size: 0.9rem;
+      padding: 6px 0;
+    }
+    .guide-nav-links a:hover { color: var(--amber); }
+    .kbd {
+      display: inline-block;
+      background: var(--cream-dark);
+      border: 1px solid #d0c0b0;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--brown-rich);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
+    <ul class="nav-links">
+      <li><a href="features.html">Features</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <a class="nav-cta" href="index.html#download">Download</a>
+    <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Guide</h1>
+    <p>A quick overview of ConTexture's key features and how to use them.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Jump nav -->
+    <div class="guide-nav">
+      <h3>Jump to</h3>
+      <ul class="guide-nav-links">
+        <li><a href="#navigation">🧭 Basic navigation</a></li>
+        <li><a href="#drawing-board">🎨 Drawing board</a></li>
+        <li><a href="#mentions">@ @Mentions &amp; image references</a></li>
+        <li><a href="#wiki-links">🔗 Wiki links</a></li>
+        <li><a href="#daily-notes">📅 Daily notes &amp; calendar</a></li>
+        <li><a href="#side-by-side">⬛⬛ Side-by-side view</a></li>
+        <li><a href="#footnotes">🔖 Footnotes &amp; citations</a></li>
+        <li><a href="#export">📤 Export &amp; collaboration</a></li>
+      </ul>
+    </div>
+
+    <!-- 1. Navigation -->
+    <div class="guide-section" id="navigation">
+      <div class="guide-header">
+        <div class="guide-icon">🧭</div>
+        <h2>Basic navigation</h2>
+      </div>
+      <div class="guide-body">
+        <p>ConTexture is organised into three main workspaces accessible from the sidebar: <strong>Creative Writing</strong>, <strong>Journal</strong>, and <strong>References</strong>. Tap the sidebar icon in the top left to show or hide it.</p>
+        <p>Within Creative Writing, your projects appear as folders. Tap a project to expand it and see its contents — chapters, character sheets, maps, outlines, and more. Tap any note to open it in the editor.</p>
+        <p>The <strong>margin panel</strong> on the right side of the editor contains five tabs: Format, Outline, Comments, Footnotes, and Images/Stats. Tap the panel icon in the top right toolbar to show or hide it.</p>
+        <div class="guide-tip">
+          <strong>Mac tip:</strong> Use the Navigate menu in the menu bar to jump between workspaces and recently opened notes with keyboard shortcuts.
+        </div>
+        <p>The <strong>+</strong> button at the top of any folder lets you create a new note, new folder, import a file, or open a drawing board. In Maps &amp; Images folders, the first option is always Import Photos.</p>
+      </div>
+    </div>
+
+    <!-- 2. Drawing board -->
+    <div class="guide-section" id="drawing-board">
+      <div class="guide-header">
+        <div class="guide-icon">🎨</div>
+        <h2>Drawing board</h2>
+      </div>
+      <div class="guide-body">
+        <p>The drawing board is a full freehand canvas you can open from any folder in your project. Use it to sketch maps, diagram scene structures, visualise character relationships, or just think visually.</p>
+        <ol class="steps">
+          <li>Tap the <strong>+</strong> button at the top of any folder</li>
+          <li>Select <strong>New Drawing</strong> from the menu</li>
+          <li>The drawing board opens with a toolbar for pen, pencil, eraser, and colour selection</li>
+          <li>Your drawing saves automatically and appears in the folder alongside your notes</li>
+        </ol>
+        <div class="guide-tip">
+          <strong>Tip:</strong> You can also open a drawing board from within the Daily Journal — useful for sketching out a quick plan or diagram alongside your daily notes.
+        </div>
+        <p>Drawing boards are stored as files in your iCloud container and sync across all your devices. On iPad with Apple Pencil, the drawing experience is particularly natural for sketching maps and diagrams.</p>
+      </div>
+    </div>
+
+    <!-- 3. @Mentions -->
+    <div class="guide-section" id="mentions">
+      <div class="guide-header">
+        <div class="guide-icon">@</div>
+        <h2>@Mentions &amp; image references</h2>
+      </div>
+      <div class="guide-body">
+        <p>Type <span class="kbd">@</span> anywhere in your writing to open the mention picker. This lets you reference images, character sheets, and other notes directly from within your text.</p>
+        <ol class="steps">
+          <li>Type <span class="kbd">@</span> at the start of a word (preceded by a space or new line)</li>
+          <li>A picker appears showing available notes and images from your project</li>
+          <li>Start typing to filter the list</li>
+          <li>Tap a result to insert the reference</li>
+        </ol>
+        <p><strong>For images:</strong> Selecting an image inserts a Markdown image reference — <code>![Image Name](filename.png)</code>. This renders as the actual image in Preview mode, so you can see your map or character portrait inline in your writing.</p>
+        <p><strong>For text notes:</strong> Selecting a note inserts a wiki link — <code>[[Note Name]]</code> — which you can tap to navigate directly to that note.</p>
+        <div class="guide-tip">
+          <strong>Tip:</strong> Make sure your images are imported into a Maps &amp; Images folder in the same project so they appear in the @mention picker.
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Wiki links -->
+    <div class="guide-section" id="wiki-links">
+      <div class="guide-header">
+        <div class="guide-icon">🔗</div>
+        <h2>Wiki links</h2>
+      </div>
+      <div class="guide-body">
+        <p>Wiki links let you connect any note to any other note in your project, creating a navigable web of interconnected writing — characters, locations, chapters, and research all linked together.</p>
+        <ol class="steps">
+          <li>Type <span class="kbd">[[</span> anywhere in your writing</li>
+          <li>A picker appears showing notes in your project</li>
+          <li>Start typing a name to filter the list</li>
+          <li>Select a note to insert the link as <code>[[Note Name]]</code></li>
+        </ol>
+        <p>In Preview mode, wiki links are tappable — tap any <code>[[link]]</code> to navigate directly to that note. This makes it easy to jump from a chapter to a character sheet and back.</p>
+        <div class="guide-tip">
+          <strong>Tip:</strong> Wiki links work across the whole project, not just the current folder. You can link a chapter to a character sheet in a different subfolder.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Daily notes & calendar -->
+    <div class="guide-section" id="daily-notes">
+      <div class="guide-header">
+        <div class="guide-icon">📅</div>
+        <h2>Daily notes &amp; calendar integration</h2>
+      </div>
+      <div class="guide-body">
+        <p>The Journal workspace creates a fresh daily note for each day automatically. Calendar events and reminders from your device appear alongside your note, giving you one place to see your schedule and your writing together.</p>
+        <p><strong>Enabling calendar and reminders access:</strong></p>
+        <ol class="steps">
+          <li>Open <strong>Settings</strong> on your iPhone, iPad, or Mac</li>
+          <li>Scroll down to <strong>ConTexture</strong> and tap it</li>
+          <li>Enable <strong>Calendars</strong> and <strong>Reminders</strong> access</li>
+          <li>Return to ConTexture — your events and reminders will now appear in the Journal view</li>
+        </ol>
+        <p><strong>Creating reminders from your writing:</strong> In any note, add a task checkbox — <span class="kbd">- [ ] </span> — and it appears as a trackable task. You can also insert a reminder directly from the Journal that will appear in your Reminders app and show up in the daily view.</p>
+        <div class="guide-tip">
+          <strong>Tip:</strong> The Journal is also a great place to open a drawing board for a quick sketch or diagram before starting your writing session.
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Side by side -->
+    <div class="guide-section" id="side-by-side">
+      <div class="guide-header">
+        <div class="guide-icon">⬛⬛</div>
+        <h2>Side-by-side view</h2>
+      </div>
+      <div class="guide-body">
+        <p>On iPad and Mac, ConTexture supports opening two documents side by side — write in one while referencing a character sheet, map, outline, or another chapter in the other.</p>
+        <p><strong>On iPad (Split View):</strong></p>
+        <ol class="steps">
+          <li>Open ConTexture and navigate to a note</li>
+          <li>Swipe up slightly from the bottom of the screen to reveal the Dock</li>
+          <li>Long-press the ConTexture icon in the Dock and drag it to the left or right edge of the screen</li>
+          <li>A second ConTexture window opens — navigate to a different note in this window</li>
+          <li>Both notes are now visible and editable side by side</li>
+        </ol>
+        <p><strong>On Mac:</strong></p>
+        <ol class="steps">
+          <li>Open a note in ConTexture</li>
+          <li>From the <strong>Window</strong> menu, choose <strong>New Window</strong> (or press <span class="kbd">⌘N</span>)</li>
+          <li>Arrange the two windows side by side on your screen</li>
+          <li>Navigate to a different note in the second window</li>
+        </ol>
+        <div class="guide-tip">
+          <strong>Tip:</strong> A great use of side-by-side is keeping your manuscript chapter open on the left and the relevant character sheet open on the right — so you can reference physical descriptions, mannerisms, and relationships as you write.
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Footnotes -->
+    <div class="guide-section" id="footnotes">
+      <div class="guide-header">
+        <div class="guide-icon">🔖</div>
+        <h2>Footnotes &amp; citations</h2>
+      </div>
+      <div class="guide-body">
+        <p>ConTexture supports standard Markdown footnotes — useful for citations, research notes, editorial comments, and asides that don't belong in the main text.</p>
+        <p><strong>Inserting a footnote:</strong></p>
+        <ol class="steps">
+          <li>Place your cursor where you want the footnote marker in the text</li>
+          <li>Open the <strong>margin panel</strong> and tap the <strong>Footnotes tab</strong> (#)</li>
+          <li>Tap <strong>Insert Footnote</strong> — a numbered marker appears in your text</li>
+          <li>Scroll to the bottom of the document where the footnote content area is and type your footnote text</li>
+        </ol>
+        <p>Footnotes are stored as standard Markdown syntax (<code>[^1]</code> in the text, <code>[^1]: footnote text</code> at the bottom), so they're fully portable to any Markdown editor or export format.</p>
+        <div class="guide-tip">
+          <strong>Tip:</strong> The Footnotes tab in the margin panel shows all footnotes in the current document in a scrollable list — tap any footnote to jump to its location in the text.
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Export & collaboration -->
+    <div class="guide-section" id="export">
+      <div class="guide-header">
+        <div class="guide-icon">📤</div>
+        <h2>Export &amp; collaboration</h2>
+      </div>
+      <div class="guide-body">
+        <p>ConTexture offers several export and sharing options — accessible from the <strong>Share</strong> button in the toolbar while a note is open, or via <strong>File → Export</strong> on Mac.</p>
+
+        <p><strong>ePub export</strong> — exports your note or project as an ePub file, readable on any e-reader, Kindle, Apple Books, or ePub viewer. One of the few iOS writing apps to offer this directly.</p>
+
+        <p><strong>Plain Markdown (.md)</strong> — exports a clean Markdown file compatible with any text editor or writing app.</p>
+
+        <p><strong>Rich export (ConTexture .md)</strong> — exports with YAML front matter and comments preserved as footnotes. Another ConTexture user can import this file with full fidelity.</p>
+
+        <p><strong>Live collaboration:</strong></p>
+        <ol class="steps">
+          <li>Open a note and tap <strong>Share</strong></li>
+          <li>Choose <strong>Share &amp; Collaborate Live</strong></li>
+          <li>The system share sheet appears — choose <strong>Add People</strong> or share via AirDrop, Mail, or Messages</li>
+          <li>The recipient gets access to the same live file via iCloud — edits from both sides sync in real time</li>
+          <li>The collaborator can open the file in ConTexture or any Markdown editor</li>
+        </ol>
+
+        <p><strong>Importing a file:</strong></p>
+        <ol class="steps">
+          <li>On Mac: <strong>File → Import…</strong> opens a file picker — select any .md or .markdown file</li>
+          <li>On iOS: use the Share button in Files app and choose ConTexture, or use the + button in any folder and select Import</li>
+          <li>The Import sheet lets you choose which project and subfolder the file lands in</li>
+        </ol>
+
+        <div class="guide-tip">
+          <strong>Tip:</strong> If you receive a file exported from ConTexture (with YAML front matter), importing it will strip the metadata automatically and place the clean content in your chosen folder.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section section-dark cta-band">
+  <h2>Still have questions?</h2>
+  <p>Drop a message on the support page — I'm happy to help.</p>
+  <a class="btn-primary" href="support.html">Contact support</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
+      <p>A writing app for all your needs on iOS, iPadOS, and macOS.</p>
+    </div>
+    <div>
+      <h4>App</h4>
+      <ul>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="support.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Timothy Frey. All rights reserved.</span>
+    <span>Made in the Netherlands 🇳🇱</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
