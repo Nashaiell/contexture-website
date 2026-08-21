@@ -13,12 +13,14 @@
   --board:#7B5EA7;   --accent:#8C4D63;
   --ink:#2B2724; --muted:#6B635C; --rule:#E2DAD0;
   --bg:#FBF8F4; --panel:#F5F0EA; --code:#F0EAE1;
+  --brand-gold:#D08830; --brand-brown:#2A1A0D;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --ink:#EDE7E0; --muted:#A79E95; --rule:#3A3430;
     --bg:#1C1917; --panel:#242020; --code:#282320;
     --journal:#E0A344; --library:#8798BC; --accent:#CC94A8;
+    --brand-gold:#E8A048; --brand-brown:#E6D3B3;
   }
 }
 #manual * { box-sizing:border-box; }
@@ -32,8 +34,8 @@
         max-width:1160px; margin:0 auto; padding:0 28px; }
 #manual nav { position:sticky; top:0; align-self:start; max-height:100vh;
       overflow-y:auto; padding:40px 0 60px; }
-#manual nav .brand { font-weight:700; font-size:19px; letter-spacing:-.01em; margin-bottom:2px; }
-#manual nav .brand span { color:var(--creative); }
+#manual nav .brand { font-weight:700; font-size:19px; letter-spacing:-.01em; margin-bottom:2px; color:var(--brand-brown); }
+#manual nav .brand span { color:var(--brand-gold); } /* Con[Text]ure — matches AppTheme.brandGold/brandBrown */
 #manual nav .sub { color:var(--muted); font-size:13px; margin-bottom:22px;
            padding-bottom:16px; border-bottom:1px solid var(--rule); }
 #manual nav a { display:block; padding:6px 12px; margin-left:-12px; color:var(--muted);
@@ -91,7 +93,7 @@
 <body>
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
+    <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Text</span>ure</a>
     <ul class="nav-links">
       <li><a href="features.html">Features</a></li>
       <li><a href="about.html">About</a></li>

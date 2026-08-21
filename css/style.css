@@ -34,9 +34,9 @@ a:hover{color:var(--amber-light)}
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,12,4,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,105,30,0.2);padding:0 24px}
 .nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:bold;color:var(--cream)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:bold;color:#E6D3B3} /* app brandBrown (dark scheme): chocolate reads as mocha on dark */
 .nav-logo img{width:30px;height:30px;border-radius:7px}
-.nav-logo .accent{color:var(--amber)}
+.nav-logo .accent{color:#E8A048} /* app brandGold (dark scheme) — matches AppTheme.swift */
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{color:rgba(250,246,240,0.7);font-size:0.9rem;transition:color 0.2s}
 .nav-links a:hover{color:var(--cream)}
