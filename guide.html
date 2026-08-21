@@ -1,103 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guide — ConTexture</title>
-  <meta name="description" content="A guide to ConTexture's key features — drawing board, @mentions, wiki links, daily notes, side-by-side view, footnotes, and export.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="icon.png">
-  <style>
-    .guide-section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--cream-dark);
-    }
-    .guide-section:last-of-type { border-bottom: none; }
-    .guide-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .guide-icon {
-      width: 52px; height: 52px;
-      background: rgba(212,105,30,0.1);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .guide-header h2 {
-      font-size: 1.6rem;
-      margin: 0;
-      color: var(--brown-rich);
-    }
-    .guide-body p { color: var(--text-muted); margin-bottom: 1rem; }
-    .guide-body p:last-child { margin-bottom: 0; }
-    .guide-tip {
-      background: rgba(212,105,30,0.07);
-      border-left: 3px solid var(--amber);
-      border-radius: 0 8px 8px 0;
-      padding: 14px 18px;
-      margin: 20px 0;
-      color: var(--text-muted);
-      font-size: 0.93rem;
-    }
-    .guide-tip strong { color: var(--brown-rich); }
-    .steps { list-style: none; padding: 0; counter-reset: steps; }
-    .steps li {
-      counter-increment: steps;
-      padding: 10px 0 10px 44px;
-      position: relative;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      border-bottom: 1px solid var(--cream-dark);
-    }
-    .steps li:last-child { border-bottom: none; }
-    .steps li::before {
-      content: counter(steps);
-      position: absolute; left: 0; top: 10px;
-      width: 28px; height: 28px;
-      background: var(--amber);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.82rem; font-weight: bold;
-      line-height: 28px; text-align: center;
-    }
-    .guide-nav {
-      background: var(--cream-dark);
-      border-radius: var(--radius);
-      padding: 28px;
-      margin-bottom: 56px;
-    }
-    .guide-nav h3 { margin-bottom: 16px; font-size: 1rem; color: var(--brown-rich); }
-    .guide-nav-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 8px;
-      list-style: none;
-    }
-    .guide-nav-links a {
-      display: flex; align-items: center; gap: 8px;
-      color: var(--brown-rich); font-size: 0.9rem;
-      padding: 6px 0;
-    }
-    .guide-nav-links a:hover { color: var(--amber); }
-    .kbd {
-      display: inline-block;
-      background: var(--cream-dark);
-      border: 1px solid #d0c0b0;
-      border-radius: 4px;
-      padding: 1px 7px;
-      font-family: monospace;
-      font-size: 0.85rem;
-      color: var(--brown-rich);
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide &mdash; ConTexture</title>
+<meta name="description" content="The complete ConTexture user manual: the three contexts, the Library, In Focus, the Apple Watch app, and everything in between.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+:root {
+  --creative:#C4622D; --journal:#D4922A; --library:#5C6B8A;
+  --board:#7B5EA7;   --accent:#8C4D63;
+  --ink:#2B2724; --muted:#6B635C; --rule:#E2DAD0;
+  --bg:#FBF8F4; --panel:#F5F0EA; --code:#F0EAE1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:#EDE7E0; --muted:#A79E95; --rule:#3A3430;
+    --bg:#1C1917; --panel:#242020; --code:#282320;
+    --journal:#E0A344; --library:#8798BC; --accent:#CC94A8;
+  }
+}
+#manual * { box-sizing:border-box; }
+#manual html { scroll-behavior:smooth; }
+#manual body {
+  margin:0; background:var(--bg); color:var(--ink);
+  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+}
+#manual .wrap { display:grid; grid-template-columns:262px minmax(0,1fr); gap:56px;
+        max-width:1160px; margin:0 auto; padding:0 28px; }
+#manual nav { position:sticky; top:0; align-self:start; max-height:100vh;
+      overflow-y:auto; padding:40px 0 60px; }
+#manual nav .brand { font-weight:700; font-size:19px; letter-spacing:-.01em; margin-bottom:2px; }
+#manual nav .brand span { color:var(--creative); }
+#manual nav .sub { color:var(--muted); font-size:13px; margin-bottom:22px;
+           padding-bottom:16px; border-bottom:1px solid var(--rule); }
+#manual nav a { display:block; padding:6px 12px; margin-left:-12px; color:var(--muted);
+        text-decoration:none; font-size:14.5px; border-radius:7px; }
+#manual nav a:hover { color:var(--ink); background:var(--panel); }
+#manual main { padding:40px 0 120px; min-width:0; }
+#manual h1 { font-size:42px; line-height:1.15; letter-spacing:-.022em; margin:.2em 0 .1em; }
+#manual h1 + p em { font-size:18px; }
+#manual h2 { font-size:27px; letter-spacing:-.012em; margin:2.4em 0 .5em;
+     padding-top:1.2em; border-top:1px solid var(--rule); }
+#manual h2:first-of-type { border-top:0; padding-top:0; margin-top:1.4em; }
+#manual h3 { font-size:19px; margin:1.9em 0 .4em; color:var(--creative); }
+#manual p { margin:.75em 0; }
+#manual em { color:var(--muted); }
+#manual a { color:var(--accent); }
+#manual ul,ol { margin:.7em 0; padding-left:1.35em; }
+#manual li { margin:.34em 0; }
+#manual code { background:var(--code); padding:.13em .42em; border-radius:5px;
+       font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; }
+#manual pre { background:var(--code); padding:16px 18px; border-radius:11px;
+      overflow-x:auto; margin:1.1em 0; border:1px solid var(--rule); }
+#manual pre code { background:none; padding:0; font-size:13.5px; }
+#manual blockquote { margin:1.2em 0; padding:14px 20px; background:var(--panel);
+  border-left:3px solid var(--journal); border-radius:0 9px 9px 0; }
+#manual blockquote p:first-child { margin-top:0; }
+#manual blockquote p:last-child { margin-bottom:0; }
+#manual .tw { overflow-x:auto; margin:1.2em 0; }
+#manual table { border-collapse:collapse; width:100%; font-size:15.5px; }
+#manual th,td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule);
+        vertical-align:top; }
+#manual th { font-size:12.5px; text-transform:uppercase; letter-spacing:.06em;
+     color:var(--muted); font-weight:600; }
+#manual tbody tr:last-child td { border-bottom:0; }
+@media (max-width:860px) {
+  .wrap { grid-template-columns:1fr; gap:0; }
+  nav { position:static; max-height:none; padding:28px 0 18px;
+        border-bottom:1px solid var(--rule); }
+  nav .sub { border-bottom:0; padding-bottom:0; margin-bottom:14px; }
+  nav a { display:inline-block; margin:0 6px 6px 0; }
+  main { padding-top:28px; }
+  h1 { font-size:33px; }
+  h2 { font-size:24px; }
+}
+@media print {
+  nav { display:none; }
+  .wrap { display:block; max-width:none; }
+  h2 { page-break-after:avoid; }
+  pre, table, blockquote { page-break-inside:avoid; }
+}
+
+#manual { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+#manual .wrap { display: block; }
+</style>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
@@ -112,240 +103,292 @@
     <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div id="manual">
+<div class="wrap">
+<nav>
+  <div class="brand">User <span>Manual</span></div>
+  <a href="#what-contexture-is">What ConTexture is</a>
+  <a href="#where-your-files-live">Where your files live</a>
+  <a href="#getting-around-the-three-contexts">Getting around: the three contexts</a>
+  <a href="#journal">Journal</a>
+  <a href="#creative">Creative</a>
+  <a href="#library">Library</a>
+  <a href="#writing-the-editor">Writing: the editor</a>
+  <a href="#the-margin-bar">The Margin Bar</a>
+  <a href="#images">Images</a>
+  <a href="#drawing-board">Drawing Board</a>
+  <a href="#capture">Capture</a>
+  <a href="#export-and-sharing">Export and sharing</a>
+  <a href="#working-with-other-apps">Working with other apps</a>
+  <a href="#on-your-wrist-the-watch-app">On your wrist: the Watch app</a>
+  <a href="#settings">Settings</a>
+  <a href="#keyboard-shortcuts">Keyboard shortcuts</a>
+  <a href="#a-note-on-file-safety">A note on file safety</a>
+</nav>
+<main>
+<h1>ConTexture — User Manual</h1>
+<p><em>A writing app that keeps your work in plain Markdown files you own.</em></p>
+<h2 id="what-contexture-is">What ConTexture is</h2>
+<p>ConTexture is a writing app for Mac, iPad and iPhone built on one idea: <strong>your writing should outlive the app you wrote it in.</strong></p>
+<p>Every note is a plain Markdown file in a folder you can open in Finder. There is no proprietary database, no export step to get your work out, and nothing that stops you opening the same folder in Obsidian, iA Writer, or TextEdit. If ConTexture disappeared tomorrow, your writing would be exactly where you left it.</p>
+<p>What it adds on top of those files is <strong>structure</strong> — a distinction between the manuscript and the material, between today and the archive, between a book and the shelf it sits on.</p>
+<h3>Who it&#x27;s for</h3>
+<p>People who write long things and keep notes while doing it. Novelists who need a series bible that three books can share. Journallers who want their days, calendar and tasks in one place. Researchers who collect sources and want them next to the writing rather than in a separate app.</p>
+<h2 id="where-your-files-live">Where your files live</h2>
+<p>Everything lives in one folder, either in iCloud Drive or on your device (<strong>Settings → General → Storage Location</strong>).</p>
+<pre><code>
+Documents/
+  Creative/         your projects, one folder per project
+  Journal/          daily notes, inbox, archive, photos, templates
+  Library/          material that outlives any single project
+  projects.json     which projects exist
+  links.json        which Library documents belong to which projects
+</code></pre>
+<p>On a Mac, iCloud storage puts this at:</p>
+<pre><code>
+~/Library/Mobile Documents/iCloud~com~timpfrey~ConText/Documents/
+</code></pre>
+<p><strong>You can edit these files anywhere.</strong> Change a note in another editor, add a <code>.md</code> file from Finder, rename a folder — ConTexture picks it up. The filesystem is the source of truth, not a copy of it.</p>
+<h3>Choosing where files live</h3>
+<p><strong>Settings → General → Storage Location</strong> offers iCloud Drive or local storage. iCloud keeps every device in step; local storage keeps everything on one machine. Switching is safe — files move rather than disappear.</p>
+<h2 id="getting-around-the-three-contexts">Getting around: the three contexts</h2>
+<p>ConTexture has three places to work, and one of them is always where you start. The bar at the bottom switches between them; <strong>Home</strong> returns to the overview.</p>
+<div class="tw"><table><thead><tr><th>Context</th><th>What it&#x27;s for</th><th>Its spine</th></tr></thead><tbody>
+<tr><td><strong>Creative</strong></td><td>Long-form projects — a book, a script, a blog</td><td>The project</td></tr>
+<tr><td><strong>Journal</strong></td><td>Daily notes, calendar, tasks</td><td>The date</td></tr>
+<tr><td><strong>Library</strong></td><td>Sources and material that outlive one project</td><td>The shelf</td></tr>
+</tbody></table></div>
+<p>The difference matters. Creative is organised by <em>what you&#x27;re writing</em>, Journal by <em>when</em>, Library by <em>what it&#x27;s about</em>. A character sheet used by three books belongs in the Library. A chapter belongs to its project. Tuesday belongs to Tuesday.</p>
+<p><strong>Drawing Board</strong> is not a fourth context — it&#x27;s a feature you reach from inside Creative or Journal. See [Drawing Board](#drawing-board).</p>
+<h3>Switching</h3>
+<ul>
+<li><strong>Bottom bar</strong> — Creative, Journal, Library, and Capture</li>
+<li><strong>Mac menu</strong> — Navigate, with ⌘1/⌘2/⌘3</li>
+<li>The bar can hide itself (<strong>Settings → General</strong>); tap or hover the bottom edge to bring it back</li>
+</ul>
+<h2 id="journal">Journal</h2>
+<p>Journal is time-first. Its spine is the daily note, named <code>yyyy-MM-dd.md</code>.</p>
+<h3>The daily note</h3>
+<p>One note per day, created when you first write in it. On a wide screen it sits beside a month calendar; on iPhone it fills the screen.</p>
+<p>A daily note holds three things:</p>
+<ol>
+<li><strong>Events</strong> — from Apple Calendar and Google Calendar, collapsible, each able to hold its own notes</li>
+<li><strong>Tasks</strong> — reminders due that day, tickable in place</li>
+<li><strong>Notes</strong> — free writing, the main body</li>
+</ol>
+<p>Events and tasks are stored as HTML comments, invisible in any other Markdown editor:</p>
+<pre><code>
+&lt;!-- event:ABC123 --&gt;
+## Team Standup
+What we agreed
+&lt;!-- /event --&gt;
 
-<div class="page-hero">
-  <div class="container">
-    <h1>Guide</h1>
-    <p>A quick overview of ConTexture's key features and how to use them.</p>
-  </div>
+&lt;!-- notes --&gt;
+The day&#x27;s writing.
+&lt;!-- /notes --&gt;
+</code></pre>
+<h3>Journal folders</h3>
+<ul>
+<li><strong>Daily Journal</strong> — the dated notes</li>
+<li><strong>Inbox</strong> — default landing place for captures</li>
+<li><strong>Events &amp; Meeting Notes</strong> — full notes attached to a calendar event</li>
+<li><strong>Photos</strong> — images, filed by date</li>
+<li><strong>Templates</strong> — fourteen starters (Meeting Notes, Weekly Review, Decision Log, Retro, and more)</li>
+<li><strong>Archive</strong> — things you&#x27;re done with</li>
+</ul>
+<p>You can create your own folders alongside these.</p>
+<h3>Calendar and tasks</h3>
+<p>Grant access and events appear automatically. <strong>Settings → Journal</strong> controls which calendars and reminder lists are included, and whether events, tasks, overdue items and week numbers show at all.</p>
+<p>Ticking a task in a daily note completes the underlying reminder, and completing it in Reminders updates the note. It&#x27;s a two-way mirror, not a copy.</p>
+<h3>In Focus</h3>
+<p>A working set of notes you&#x27;re actively using — closer to a pinboard than to a folder. Notes are never moved; focus is a flag plus an ordering, so a note keeps its home folder no matter what.</p>
+<p>Ways in: press <strong>⌘⇧F</strong> in any Journal note, use the note&#x27;s <strong>⋯</strong> menu, or <strong>drag a note onto the In Focus panel</strong> (the bar under Today in the calendar pane swaps between Events &amp; Tasks and In Focus). Assign a loose date with <strong>⌘⇧D</strong> — it&#x27;s stored invisibly inside the note, so it survives editing in any other app.</p>
+<p>The set follows you: it syncs between Mac, iPhone and iPad, and it&#x27;s one of the pages on the Apple Watch app, so your working set is a wrist-glance away. Removing a note from focus never touches the note itself.</p>
+<h3>Templates</h3>
+<p><strong>+ → From Template</strong> to start a note from one of the fourteen bundled templates. Placeholders like <code>{{title}}</code>, <code>{{date}}</code> and <code>{{weekday}}</code> fill in when the note is created, so the template keeps its tokens and stays reusable.</p>
+<p>Templates are plain files in <code>Journal/Templates</code> — edit them, delete them, add your own.</p>
+<h2 id="creative">Creative</h2>
+<p>Creative is project-first. A project is usually a book.</p>
+<h3>Making a project</h3>
+<p><strong>+ → New Project</strong> in the Creative sidebar, then choose:</p>
+<ul>
+<li><strong>Longform</strong> — a book or script. Folders: Manuscript, Characters, Maps &amp; Images, Culture &amp; Languages, Timeline, Research</li>
+<li><strong>Journaling</strong> — blogging or a writing diary. Folders: Events, Photos, Blogging</li>
+</ul>
+<p>These folders are a starting point, not a rule. Rename them, delete them, add your own.</p>
+<p>There are also <strong>genre templates</strong> (Drama, Mystery, Fantasy, Non-Fiction, Science Fiction, Historical) in <strong>Settings → Creative → Templates</strong>, each seeding a project with a cover page and a genre-appropriate starter note.</p>
+<h3>The binder</h3>
+<p>The sidebar is your project&#x27;s structure, nested as deeply as you like. Drag to reorder or move between folders. <strong>Settings → General</strong> controls whether folders sort above notes.</p>
+<h3>New folders and notes</h3>
+<ul>
+<li><strong>+ → New Page</strong> — a note in the current project</li>
+<li><strong>+ → New Folder</strong> — a folder</li>
+<li><strong>+ → Open File…</strong> — bring in an existing <code>.md</code>, <code>.txt</code> or <code>.rtf</code></li>
+<li>Right-click any row to rename, duplicate, move, or delete</li>
+</ul>
+<p>Only <code>/</code> and <code>:</code> are forbidden in names — everything else is allowed.</p>
+<h3>Multi-select</h3>
+<p>Click one row, then ⇧-click for a range or ⌘-click to add individual rows. Right-click acts on the whole selection. Esc clears it.</p>
+<h2 id="library">Library</h2>
+<p>The Library is the shelf that outlives any single project — and the answer to a problem most writing apps have.</p>
+<h3>The problem it solves</h3>
+<p>In most tools a project <em>is</em> a book. Anything shared across a series has nowhere to live, so you copy it into each project and watch the copies drift. Flat note vaults have the opposite problem: everything is equal, and nothing distinguishes what&#x27;s <em>in</em> the book from what&#x27;s <em>about</em> it.</p>
+<h3>The rule: link, don&#x27;t move</h3>
+<p><strong>A Library document lives in the Library and is shown in each project that links it.</strong> One glossary can appear in all three books of a series, edited once, correct everywhere. Nothing is copied, so nothing can drift.</p>
+<h3>Promotion is the flow</h3>
+<p>You write a character sheet while drafting book one, because that&#x27;s when you need it. Only later does book two need the same character.</p>
+<p><strong><code>&lt;·&gt;</code> menu → Move to Library…</strong> captures exactly that moment. Pick a shelf and the document moves to the Library and links back to the project it came from. It keeps appearing in that project&#x27;s sidebar under <strong>FROM LIBRARY</strong>, and rows say <em>&quot;Also in …&quot;</em> so it&#x27;s obvious an edit reaches more than the book you&#x27;re in.</p>
+<p>Shelves: Sources, Characters, Locations, Culture &amp; Languages, Timeline, Research.</p>
+<h3>Summoning the Library while you write: @</h3>
+<p>Type <strong>@</strong> in a Creative page and the Library opens right at your cursor — every shelf as a fold-out list, subfolders nested, with your project&#x27;s own character and location sheets at the top under <strong>This Project</strong>.</p>
+<p>Keep typing after the @ and the list narrows: <code>@gac</code> finds Gacrux wherever his sheet lives. Names match against the document&#x27;s title <em>and</em> its <code>@alias</code>, so a &quot;Zaniah, Lady of the Falling&quot; sheet can answer to <code>@zaniah</code>.</p>
+<p>Selecting inserts the <strong>name as plain text</strong> — @ is a spelling aid for the names you invented, not a link. When you want an actual link to the document, that&#x27;s what <code>[[</code> is for.</p>
+<p>Because @ draws on the whole Library, a character promoted while writing book one is instantly summonable in book two — no setup, no linking first.</p>
+<h3>What this gives you</h3>
+<ul>
+<li><strong>Compile safety</strong> — a Library item is never compiled into the manuscript. A guarantee, not a checkbox you can forget</li>
+<li><strong>One canonical source across books</strong></li>
+<li><strong>Cross-book consistency</strong> — which books a character appears in, and what you said about something in book one that contradicts book three</li>
+</ul>
+<h3>Library folders</h3>
+<p>Alongside the shelves: References Inbox, Sources and Citations, Web Links and Bookmarks, Read Later, and Code.</p>
+<h2 id="writing-the-editor">Writing: the editor</h2>
+<p>The editor is plain Markdown with live styling — headings look like headings while staying <code>#</code> on disk.</p>
+<h3>Preview</h3>
+<p>Toggle preview to render the note: images appear, checkboxes become tickable, and <code>[[wiki links]]</code> become tappable.</p>
+<h3>The Writing Bar</h3>
+<p>At the bottom of the editor: <strong>Style</strong> (bold, italic, underline), <strong>Headings</strong> (H1–H3), <strong>Lists</strong> (bullet, numbered, task), <strong>Indent</strong>, <strong>Wiki Link</strong>, and a stats toggle. Hide it in <strong>Settings → Creative</strong>.</p>
+<h3>Wiki links</h3>
+<p>Type <code>[[</code> or tap the button to link to another note. Filter by name, or create a note that doesn&#x27;t exist yet. In preview, links are tappable; a link to a missing note offers to create it.</p>
+<h3>Tasks</h3>
+<p><code>- [ ]</code> is a task and <code>- [x]</code> is a done one — plain Markdown, readable anywhere. Tasks sync with Apple Reminders as a two-way mirror.</p>
+<h3>Track Changes</h3>
+<p><strong>Settings → Creative</strong> turns on Track Changes, recording edits as CriticMarkup so revisions are visible and reversible.</p>
+<h3>Headings and sizes: relative, everywhere</h3>
+<p>Formatting works in <strong>steps</strong> rather than absolute levels. <strong>Heading +</strong> adds a <code>#</code> (body → H1 → … → H6) and <strong>Heading −</strong> removes one; font size has the same +/− pair (⌘+ / ⌘− on Mac). The same controls appear in the Margin Bar, the Mac menu bar, the <code>&lt;·&gt;</code> menu and the writing bar — one vocabulary, every surface, and the same nine fonts offered everywhere.</p>
+<h2 id="the-margin-bar">The Margin Bar</h2>
+<p>The panel beside the editor in Creative, with eight tabs:</p>
+<div class="tw"><table><thead><tr><th>Tab</th><th>What it does</th></tr></thead><tbody>
+<tr><td><strong>Format</strong></td><td>Fonts, size, spacing, alignment</td></tr>
+<tr><td><strong>Outline</strong></td><td>Headings as a jumpable table of contents</td></tr>
+<tr><td><strong>Comments</strong></td><td>Notes on passages, without touching the text</td></tr>
+<tr><td><strong>Changes</strong></td><td>Tracked edits, accept or reject</td></tr>
+<tr><td><strong>Style</strong></td><td>Readability and writing statistics</td></tr>
+<tr><td><strong>Footnotes</strong></td><td>Footnotes in the document</td></tr>
+<tr><td><strong>Snapshots</strong></td><td>Saved versions of a document, to compare or restore</td></tr>
+<tr><td><strong>Notes</strong></td><td>A scratchpad attached to the document</td></tr>
+</tbody></table></div>
+<p>Each tab can be hidden in <strong>Settings → Creative</strong>, and can be moved to the bottom bar instead of the margin — useful on iPhone, where width is scarce.</p>
+<h3>Snapshots</h3>
+<p>A snapshot is a copy of the document at a moment. Take one before a big revision; compare or restore later. This is version history that doesn&#x27;t require you to trust a cloud.</p>
+<h3>Bookmarks and snippets</h3>
+<p>Mark a place in a document or save a passage worth reusing. Both sync across devices. <strong>Settings → Creative</strong> controls whether snippets show their source path and a reveal action.</p>
+<h2 id="images">Images</h2>
+<h3>Adding one</h3>
+<ul>
+<li><strong>Paste</strong> a screenshot straight into a daily note</li>
+<li><strong>Drag</strong> an image from Finder, Photos or Files onto the note</li>
+<li><strong>+ button</strong> on the Images panel</li>
+</ul>
+<p>All three save to <code>Journal/Photos/&lt;date&gt;/</code> and reference the file with a relative link, so nothing breaks if the folder moves.</p>
+<h3>Seeing them</h3>
+<p>Images render <strong>inline in the note</strong> at the point you added them. They also appear as thumbnails in the <strong>Images panel</strong> beside the calendar; tap one for a full-size viewer you can pinch, drag, and double-tap to zoom.</p>
+<p>The panel shows every image for the day whether or not the note references it — so an image added from the picker is kept even if you never write about it.</p>
+<h3>Removing one</h3>
+<p>Delete the image in the note and it leaves the panel too. The file is <strong>moved to a <code>Removed/</code> folder</strong>, not deleted, so nothing is lost to a stray keystroke. Drag it back in Finder to restore it.</p>
+<h2 id="drawing-board">Drawing Board</h2>
+<p>A visual thinking surface — cards, connections, sketching — reached from inside a Creative project or Journal, opening full screen.</p>
+<p>It&#x27;s a <strong>feature, not a context</strong>: a board belongs to the work you&#x27;re already doing, the way a corkboard belongs to a desk. You can have several per context.</p>
+<p>Boards are stored as <code>&lt;context&gt;/Drawing Board/&lt;name&gt;.json</code>. Archiving <em>moves</em> the file to <code>Drawing Board/Archive/</code>, so the state is visible in Finder.</p>
+<p>Export a board as PDF, PNG or JSON. Exports use the full content bounds, not just what&#x27;s on screen.</p>
+<h2 id="capture">Capture</h2>
+<p>Capture is for getting something down without deciding where it goes.</p>
+<p>Reach it from the <strong>Capture button</strong> in the bottom bar, the <strong>widget</strong>, or Shortcuts and Siri. Pick a destination — Journal Inbox, today&#x27;s daily note, a Creative project, or the Library — and it lands there.</p>
+<p>The <strong>widget</strong> offers the same destinations from the Home Screen. The <strong>Clipper extension</strong> saves web pages and selections from Safari into the Library.</p>
+<h2 id="export-and-sharing">Export and sharing</h2>
+<h3>A note</h3>
+<p><strong>Export</strong> from the editor menu: Markdown, plain text, PDF, or Rich Text. Share, save to Files, or send by email.</p>
+<h3>A daily note</h3>
+<p>The share icon in the daily note exports the day, events and tasks included.</p>
+<h3>A whole project</h3>
+<p><strong>Compile</strong> assembles a project&#x27;s documents into one file — the manuscript without the material, since Library documents are never compiled.</p>
+<h2 id="working-with-other-apps">Working with other apps</h2>
+<p>Both integrations are toggled in <strong>Settings → General → Connections</strong>, and their actions appear whether or not the app is installed on the device you&#x27;re using.</p>
+<h3>DEVONthink</h3>
+<p><strong>Share to DEVONthink</strong> sends the current document across. If DEVONthink isn&#x27;t installed the text is copied to the clipboard instead, so nothing is lost.</p>
+<p>Useful when ConTexture is where you write and DEVONthink is where you keep research long-term.</p>
+<h3>OmniFocus</h3>
+<p><strong>Send Tasks to OmniFocus</strong> converts the note&#x27;s <code>- [ ]</code> tasks into TaskPaper and hands them to the OmniFocus inbox, keeping heading structure so tasks arrive grouped rather than as a flat list.</p>
+<p><strong>Inline OmniFocus parameters pass through untouched.</strong> Write:</p>
+<pre><code>
+- [ ] Email the agent @due(friday) @flagged
+- [ ] Read chapter three @defer(2pm) @estimate(30m)
+</code></pre>
+<p>…and OmniFocus parses the dates, flags and estimates on import.</p>
+<h3>Apple Calendar and Reminders</h3>
+<p>Events appear in daily notes; reminders appear as tasks and stay in step both ways. <strong>Settings → Journal</strong> chooses which calendars and lists take part.</p>
+<h3>Google Calendar</h3>
+<p>Sign in under <strong>Settings → Connections</strong> and choose which calendars appear.</p>
+<h3>Task reports</h3>
+<p>A scheduled summary of outstanding tasks across your writing — <strong>Settings → Journal → Task Report</strong>. Choose a format, and a cadence of every 12 hours, daily, weekly, or specific days.</p>
+<h3>Claude and MCP</h3>
+<p>ConTexture can connect to Claude Desktop, letting Claude read and write your notes directly — search your journal, draft into a project, file research. Set it up in <strong>Settings → Connections</strong>.</p>
+<h2 id="on-your-wrist-the-watch-app">On your wrist: the Watch app</h2>
+<p>The Apple Watch app is built around one honest constraint: the watch can&#x27;t reach your files (watchOS has no iCloud Drive), so it pairs with the iPhone app instead. Three pages, swiped vertically:</p>
+<p><strong>Capture.</strong> The reason the app exists. Tap, dictate a thought, send — it lands in your Inbox as a note, routed through the same path as the widget and Shortcuts. Out of range of your phone? The capture queues on the watch and delivers itself when you&#x27;re back — the pending count is shown, and nothing is ever lost.</p>
+<p><strong>Today.</strong> A read-only snapshot of today&#x27;s daily note — events, tasks and notes at a glance.</p>
+<p><strong>In Focus.</strong> Your working set, tap through to read any note.</p>
+<p>Today and In Focus update automatically whenever the iPhone app is used and whenever your focus list changes; the last snapshot stays on the watch when your phone is elsewhere, with an &quot;Updated…&quot; line so you know how fresh it is. Reading on the wrist is deliberately read-only — writing happens on devices with keyboards.</p>
+<h2 id="settings">Settings</h2>
+<p>Seven tabs.</p>
+<h3>General</h3>
+<p>Appearance (System, Light, Dark) · sidebar sort order · context bar auto-hide · <strong>Storage Location</strong> (iCloud Drive or on this device) · Connections, including the DEVONthink and OmniFocus toggles.</p>
+<h3>Creative</h3>
+<p>Margin Bar tabs — which appear, and whether each sits in the margin or the bottom bar · Track Changes · snippet display options · project templates · writing bar, word count and format bar.</p>
+<h3>Journal</h3>
+<p>Show events, tasks, reminders, overdue items · auto-populate the daily note · week numbers · which calendars and reminder lists sync · the Events &amp; Meeting Notes folder · task report format and schedule.</p>
+<h3>Library</h3>
+<p>Folder visibility and behaviour for the Library context.</p>
+<h3>Drawing Board</h3>
+<p>Board defaults and appearance.</p>
+<h3>Connections</h3>
+<p>Google Calendar sign-in and per-calendar toggles · MCP setup for Claude Desktop · integration toggles.</p>
+<h3>About</h3>
+<p>Version and build · legal · and <strong>Replay the intro tour</strong>, which starts the first-run tutorial again.</p>
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+<p>Mac, mostly; iPad with a keyboard supports many.</p>
+<div class="tw"><table><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody>
+<tr><td>⌘1 / ⌘2 / ⌘3</td><td>Creative / Journal / Library</td></tr>
+<tr><td>⌘5</td><td>Quick Capture</td></tr>
+<tr><td>⌘N</td><td>New note</td></tr>
+<tr><td>⌘R</td><td>Refresh from iCloud</td></tr>
+<tr><td>⌘Z / ⇧⌘Z</td><td>Undo / Redo</td></tr>
+<tr><td>⌘B / ⌘I / ⌘U</td><td>Bold / Italic / Underline</td></tr>
+<tr><td>⌘⇧F</td><td>Toggle In Focus</td></tr>
+<tr><td>⌘⇧D</td><td>Assign a date</td></tr>
+<tr><td>⌥⇧⌘T</td><td>Task report</td></tr>
+<tr><td>⌘F</td><td>Find</td></tr>
+</tbody></table></div>
+<h2 id="a-note-on-file-safety">A note on file safety</h2>
+<p>ConTexture is built so that the worst case is recoverable.</p>
+<ul>
+<li>Notes are <strong>read from disk</strong> when opened, never from a cache that might be stale</li>
+<li>A save that loses more than half a document writes a timestamped <code>.bak</code> alongside it</li>
+<li>Deleted images are <strong>moved</strong>, not destroyed</li>
+<li>Folder structure on disk mirrors what you see, so anything can be found and fixed in Finder</li>
+</ul>
+<p>Your writing is a folder of text files. That&#x27;s the whole point.</p>
+</main>
 </div>
-
-<section class="section">
-  <div class="container">
-
-    <!-- Jump nav -->
-    <div class="guide-nav">
-      <h3>Jump to</h3>
-      <ul class="guide-nav-links">
-        <li><a href="#navigation">🧭 Basic navigation</a></li>
-        <li><a href="#drawing-board">🎨 Drawing board</a></li>
-        <li><a href="#mentions">@ @Mentions &amp; image references</a></li>
-        <li><a href="#wiki-links">🔗 Wiki links</a></li>
-        <li><a href="#daily-notes">📅 Daily notes &amp; calendar</a></li>
-        <li><a href="#side-by-side">⬛⬛ Side-by-side view</a></li>
-        <li><a href="#footnotes">🔖 Footnotes &amp; citations</a></li>
-        <li><a href="#export">📤 Export &amp; collaboration</a></li>
-      </ul>
-    </div>
-
-    <!-- 1. Navigation -->
-    <div class="guide-section" id="navigation">
-      <div class="guide-header">
-        <div class="guide-icon">🧭</div>
-        <h2>Basic navigation</h2>
-      </div>
-      <div class="guide-body">
-        <p>ConTexture is organised into three main workspaces accessible from the sidebar: <strong>Creative Writing</strong>, <strong>Journal</strong>, and <strong>References</strong>. Tap the sidebar icon in the top left to show or hide it.</p>
-        <p>Within Creative Writing, your projects appear as folders. Tap a project to expand it and see its contents — chapters, character sheets, maps, outlines, and more. Tap any note to open it in the editor.</p>
-        <p>The <strong>margin panel</strong> on the right side of the editor contains five tabs: Format, Outline, Comments, Footnotes, and Images/Stats. Tap the panel icon in the top right toolbar to show or hide it.</p>
-        <div class="guide-tip">
-          <strong>Mac tip:</strong> Use the Navigate menu in the menu bar to jump between workspaces and recently opened notes with keyboard shortcuts.
-        </div>
-        <p>The <strong>+</strong> button at the top of any folder lets you create a new note, new folder, import a file, or open a drawing board. In Maps &amp; Images folders, the first option is always Import Photos.</p>
-      </div>
-    </div>
-
-    <!-- 2. Drawing board -->
-    <div class="guide-section" id="drawing-board">
-      <div class="guide-header">
-        <div class="guide-icon">🎨</div>
-        <h2>Drawing board</h2>
-      </div>
-      <div class="guide-body">
-        <p>The drawing board is a full freehand canvas you can open from any folder in your project. Use it to sketch maps, diagram scene structures, visualise character relationships, or just think visually.</p>
-        <ol class="steps">
-          <li>Tap the <strong>+</strong> button at the top of any folder</li>
-          <li>Select <strong>New Drawing</strong> from the menu</li>
-          <li>The drawing board opens with a toolbar for pen, pencil, eraser, and colour selection</li>
-          <li>Your drawing saves automatically and appears in the folder alongside your notes</li>
-        </ol>
-        <div class="guide-tip">
-          <strong>Tip:</strong> You can also open a drawing board from within the Daily Journal — useful for sketching out a quick plan or diagram alongside your daily notes.
-        </div>
-        <p>Drawing boards are stored as files in your iCloud container and sync across all your devices. On iPad with Apple Pencil, the drawing experience is particularly natural for sketching maps and diagrams.</p>
-      </div>
-    </div>
-
-    <!-- 3. @Mentions -->
-    <div class="guide-section" id="mentions">
-      <div class="guide-header">
-        <div class="guide-icon">@</div>
-        <h2>@Mentions &amp; image references</h2>
-      </div>
-      <div class="guide-body">
-        <p>Type <span class="kbd">@</span> anywhere in your writing to open the mention picker. This lets you reference images, character sheets, and other notes directly from within your text.</p>
-        <ol class="steps">
-          <li>Type <span class="kbd">@</span> at the start of a word (preceded by a space or new line)</li>
-          <li>A picker appears showing available notes and images from your project</li>
-          <li>Start typing to filter the list</li>
-          <li>Tap a result to insert the reference</li>
-        </ol>
-        <p><strong>For images:</strong> Selecting an image inserts a Markdown image reference — <code>![Image Name](filename.png)</code>. This renders as the actual image in Preview mode, so you can see your map or character portrait inline in your writing.</p>
-        <p><strong>For text notes:</strong> Selecting a note inserts a wiki link — <code>[[Note Name]]</code> — which you can tap to navigate directly to that note.</p>
-        <div class="guide-tip">
-          <strong>Tip:</strong> Make sure your images are imported into a Maps &amp; Images folder in the same project so they appear in the @mention picker.
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. Wiki links -->
-    <div class="guide-section" id="wiki-links">
-      <div class="guide-header">
-        <div class="guide-icon">🔗</div>
-        <h2>Wiki links</h2>
-      </div>
-      <div class="guide-body">
-        <p>Wiki links let you connect any note to any other note in your project, creating a navigable web of interconnected writing — characters, locations, chapters, and research all linked together.</p>
-        <ol class="steps">
-          <li>Type <span class="kbd">[[</span> anywhere in your writing</li>
-          <li>A picker appears showing notes in your project</li>
-          <li>Start typing a name to filter the list</li>
-          <li>Select a note to insert the link as <code>[[Note Name]]</code></li>
-        </ol>
-        <p>In Preview mode, wiki links are tappable — tap any <code>[[link]]</code> to navigate directly to that note. This makes it easy to jump from a chapter to a character sheet and back.</p>
-        <div class="guide-tip">
-          <strong>Tip:</strong> Wiki links work across the whole project, not just the current folder. You can link a chapter to a character sheet in a different subfolder.
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. Daily notes & calendar -->
-    <div class="guide-section" id="daily-notes">
-      <div class="guide-header">
-        <div class="guide-icon">📅</div>
-        <h2>Daily notes &amp; calendar integration</h2>
-      </div>
-      <div class="guide-body">
-        <p>The Journal workspace creates a fresh daily note for each day automatically. Calendar events and reminders from your device appear alongside your note, giving you one place to see your schedule and your writing together.</p>
-        <p><strong>Enabling calendar and reminders access:</strong></p>
-        <ol class="steps">
-          <li>Open <strong>Settings</strong> on your iPhone, iPad, or Mac</li>
-          <li>Scroll down to <strong>ConTexture</strong> and tap it</li>
-          <li>Enable <strong>Calendars</strong> and <strong>Reminders</strong> access</li>
-          <li>Return to ConTexture — your events and reminders will now appear in the Journal view</li>
-        </ol>
-        <p><strong>Creating reminders from your writing:</strong> In any note, add a task checkbox — <span class="kbd">- [ ] </span> — and it appears as a trackable task. You can also insert a reminder directly from the Journal that will appear in your Reminders app and show up in the daily view.</p>
-        <div class="guide-tip">
-          <strong>Tip:</strong> The Journal is also a great place to open a drawing board for a quick sketch or diagram before starting your writing session.
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. Side by side -->
-    <div class="guide-section" id="side-by-side">
-      <div class="guide-header">
-        <div class="guide-icon">⬛⬛</div>
-        <h2>Side-by-side view</h2>
-      </div>
-      <div class="guide-body">
-        <p>On iPad and Mac, ConTexture supports opening two documents side by side — write in one while referencing a character sheet, map, outline, or another chapter in the other.</p>
-        <p><strong>On iPad (Split View):</strong></p>
-        <ol class="steps">
-          <li>Open ConTexture and navigate to a note</li>
-          <li>Swipe up slightly from the bottom of the screen to reveal the Dock</li>
-          <li>Long-press the ConTexture icon in the Dock and drag it to the left or right edge of the screen</li>
-          <li>A second ConTexture window opens — navigate to a different note in this window</li>
-          <li>Both notes are now visible and editable side by side</li>
-        </ol>
-        <p><strong>On Mac:</strong></p>
-        <ol class="steps">
-          <li>Open a note in ConTexture</li>
-          <li>From the <strong>Window</strong> menu, choose <strong>New Window</strong> (or press <span class="kbd">⌘N</span>)</li>
-          <li>Arrange the two windows side by side on your screen</li>
-          <li>Navigate to a different note in the second window</li>
-        </ol>
-        <div class="guide-tip">
-          <strong>Tip:</strong> A great use of side-by-side is keeping your manuscript chapter open on the left and the relevant character sheet open on the right — so you can reference physical descriptions, mannerisms, and relationships as you write.
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. Footnotes -->
-    <div class="guide-section" id="footnotes">
-      <div class="guide-header">
-        <div class="guide-icon">🔖</div>
-        <h2>Footnotes &amp; citations</h2>
-      </div>
-      <div class="guide-body">
-        <p>ConTexture supports standard Markdown footnotes — useful for citations, research notes, editorial comments, and asides that don't belong in the main text.</p>
-        <p><strong>Inserting a footnote:</strong></p>
-        <ol class="steps">
-          <li>Place your cursor where you want the footnote marker in the text</li>
-          <li>Open the <strong>margin panel</strong> and tap the <strong>Footnotes tab</strong> (#)</li>
-          <li>Tap <strong>Insert Footnote</strong> — a numbered marker appears in your text</li>
-          <li>Scroll to the bottom of the document where the footnote content area is and type your footnote text</li>
-        </ol>
-        <p>Footnotes are stored as standard Markdown syntax (<code>[^1]</code> in the text, <code>[^1]: footnote text</code> at the bottom), so they're fully portable to any Markdown editor or export format.</p>
-        <div class="guide-tip">
-          <strong>Tip:</strong> The Footnotes tab in the margin panel shows all footnotes in the current document in a scrollable list — tap any footnote to jump to its location in the text.
-        </div>
-      </div>
-    </div>
-
-    <!-- 8. Export & collaboration -->
-    <div class="guide-section" id="export">
-      <div class="guide-header">
-        <div class="guide-icon">📤</div>
-        <h2>Export &amp; collaboration</h2>
-      </div>
-      <div class="guide-body">
-        <p>ConTexture offers several export and sharing options — accessible from the <strong>Share</strong> button in the toolbar while a note is open, or via <strong>File → Export</strong> on Mac.</p>
-
-        <p><strong>ePub export</strong> — exports your note or project as an ePub file, readable on any e-reader, Kindle, Apple Books, or ePub viewer. One of the few iOS writing apps to offer this directly.</p>
-
-        <p><strong>Plain Markdown (.md)</strong> — exports a clean Markdown file compatible with any text editor or writing app.</p>
-
-        <p><strong>Rich export (ConTexture .md)</strong> — exports with YAML front matter and comments preserved as footnotes. Another ConTexture user can import this file with full fidelity.</p>
-
-        <p><strong>Live collaboration:</strong></p>
-        <ol class="steps">
-          <li>Open a note and tap <strong>Share</strong></li>
-          <li>Choose <strong>Share &amp; Collaborate Live</strong></li>
-          <li>The system share sheet appears — choose <strong>Add People</strong> or share via AirDrop, Mail, or Messages</li>
-          <li>The recipient gets access to the same live file via iCloud — edits from both sides sync in real time</li>
-          <li>The collaborator can open the file in ConTexture or any Markdown editor</li>
-        </ol>
-
-        <p><strong>Importing a file:</strong></p>
-        <ol class="steps">
-          <li>On Mac: <strong>File → Import…</strong> opens a file picker — select any .md or .markdown file</li>
-          <li>On iOS: use the Share button in Files app and choose ConTexture, or use the + button in any folder and select Import</li>
-          <li>The Import sheet lets you choose which project and subfolder the file lands in</li>
-        </ol>
-
-        <div class="guide-tip">
-          <strong>Tip:</strong> If you receive a file exported from ConTexture (with YAML front matter), importing it will strip the metadata automatically and place the clean content in your chosen folder.
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="section section-dark cta-band">
-  <h2>Still have questions?</h2>
-  <p>Drop a message on the support page — I'm happy to help.</p>
-  <a class="btn-primary" href="support.html">Contact support</a>
-</section>
-
+</div>
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <a class="nav-logo" href="index.html"><img src="icon.png" alt="ConTexture">Con<span class="accent">Texture</span></a>
-      <p>A writing app for all your needs on iOS, iPadOS, and macOS.</p>
+  <div class="footer-grid">
+    <div>
+      <h4>ConTexture</h4>
+      <p>Long-form writing for iOS, iPadOS &amp; Mac.</p>
     </div>
     <div>
-      <h4>App</h4>
+      <h4>Site</h4>
       <ul>
         <li><a href="features.html">Features</a></li>
         <li><a href="about.html">About</a></li>
@@ -367,7 +410,6 @@
     <span>Made in the Netherlands 🇳🇱</span>
   </div>
 </footer>
-
 <script src="js/main.js"></script>
 </body>
 </html>
