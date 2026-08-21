@@ -15,21 +15,24 @@
   --bg:#FBF8F4; --panel:#F5F0EA; --code:#F0EAE1;
   --brand-gold:#D08830; --brand-brown:#2A1A0D;
 }
-/* No dark-scheme override here: the site itself has no dark mode — its body
-   is always cream — so flipping the manual's ink to near-white produced
-   white-on-cream text for anyone whose OS is set to dark. */
 #manual * { box-sizing:border-box; }
-/* The manual's TOC is a "Contents" panel at the top of the article, not a
-   sidebar: #manual .wrap is display:block on this page, and the site header
-   already owns position:fixed. Keep this nav in normal flow. */
-#manual nav { position:static; max-height:none; overflow:visible;
-      background:var(--panel); border:1px solid var(--rule);
-      border-radius:14px; padding:24px 28px 18px; margin:0 0 12px; }
-#manual nav .brand { font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px; color:var(--muted); }
-#manual nav a { display:inline-block; padding:5px 13px; margin:0 6px 8px 0;
-        color:var(--ink); background:var(--bg); border:1px solid var(--rule);
-        text-decoration:none; font-size:14px; border-radius:100px; }
-#manual nav a:hover { color:#fff; background:var(--creative); border-color:var(--creative); }
+#manual html { scroll-behavior:smooth; }
+#manual body {
+  margin:0; background:var(--bg); color:var(--ink);
+  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+}
+#manual .wrap { display:grid; grid-template-columns:262px minmax(0,1fr); gap:56px;
+        max-width:1160px; margin:0 auto; padding:0 28px; }
+#manual nav { position:sticky; top:0; align-self:start; max-height:100vh;
+      overflow-y:auto; padding:40px 0 60px; }
+#manual nav .brand { font-weight:700; font-size:19px; letter-spacing:-.01em; margin-bottom:2px; color:var(--brand-brown); }
+#manual nav .brand span { color:var(--brand-gold); } /* Con[Text]ure — matches AppTheme.brandGold/brandBrown */
+#manual nav .sub { color:var(--muted); font-size:13px; margin-bottom:22px;
+           padding-bottom:16px; border-bottom:1px solid var(--rule); }
+#manual nav a { display:block; padding:6px 12px; margin-left:-12px; color:var(--muted);
+        text-decoration:none; font-size:14.5px; border-radius:7px; }
+#manual nav a:hover { color:var(--ink); background:var(--panel); }
 #manual main { padding:40px 0 120px; min-width:0; }
 #manual h1 { font-size:42px; line-height:1.15; letter-spacing:-.022em; margin:.2em 0 .1em; }
 #manual h1 + p em { font-size:18px; }
@@ -53,31 +56,35 @@
 #manual blockquote p:last-child { margin-bottom:0; }
 #manual .tw { overflow-x:auto; margin:1.2em 0; }
 #manual table { border-collapse:collapse; width:100%; font-size:15.5px; }
-#manual th,#manual td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule);
+#manual th,td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule);
         vertical-align:top; }
 #manual th { font-size:12.5px; text-transform:uppercase; letter-spacing:.06em;
      color:var(--muted); font-weight:600; }
 #manual tbody tr:last-child td { border-bottom:0; }
-/* Contents chips jump to h2 anchors — keep them clear of the fixed header. */
-#manual h2[id] { scroll-margin-top: 84px; }
-@media (max-width:860px) {
-  /* Everything here MUST stay #manual-scoped: a bare `nav` in this block
-     once stripped position:fixed from the SITE header on phones. */
-  #manual h1 { font-size:33px; }
-  #manual h2 { font-size:24px; }
-  #manual nav { padding:18px 20px 12px; }
-}
-@media print {
-  body > nav, #manual nav { display:none; }
-  #manual .wrap { display:block; max-width:none; }
-  #manual h2 { page-break-after:avoid; }
-  #manual pre, #manual table, #manual blockquote { page-break-inside:avoid; }
-}
 
-/* 64px fixed site header + breathing room. */
 #manual { max-width: 860px; margin: 0 auto; padding: 104px 24px 80px; }
 #manual .wrap { display: block; }
 #manual main { padding-top: 0; }
+#manual nav { position: static; max-height: none; overflow: visible;
+  background: var(--panel); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 24px 28px 18px; margin: 24px 0 12px; }
+#manual nav .brand { font-weight: 700; font-size: 13px; letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: 14px; color: var(--muted); }
+#manual nav a { display: inline-block; padding: 5px 13px; margin: 0 6px 8px 0;
+  color: var(--ink); background: var(--bg); border: 1px solid var(--rule);
+  text-decoration: none; font-size: 14px; border-radius: 100px; }
+#manual nav a:hover { color: #fff; background: var(--creative); border-color: var(--creative); }
+#manual h2[id] { scroll-margin-top: 84px; }
+@media (max-width: 860px) {
+  #manual h1 { font-size: 33px; }
+  #manual h2 { font-size: 24px; }
+  #manual nav { padding: 18px 20px 12px; }
+}
+@media print {
+  body > nav, #manual nav, footer { display: none; }
+  #manual h2 { page-break-after: avoid; }
+  #manual pre, #manual table, #manual blockquote { page-break-inside: avoid; }
+}
 </style>
 </head>
 <body>
@@ -110,6 +117,7 @@
   <a href="#library">Library</a>
   <a href="#writing-the-editor">Writing: the editor</a>
   <a href="#the-margin-bar">The Margin Bar</a>
+  <a href="#bookmarks-and-snippets">Bookmarks and snippets</a>
   <a href="#images">Images</a>
   <a href="#drawing-board">Drawing Board</a>
   <a href="#capture">Capture</a>
@@ -274,7 +282,16 @@ The day&#x27;s writing.
 <h3>Snapshots</h3>
 <p>A snapshot is a copy of the document at a moment. Take one before a big revision; compare or restore later. This is version history that doesn&#x27;t require you to trust a cloud.</p>
 <h3>Bookmarks and snippets</h3>
-<p>Mark a place in a document or save a passage worth reusing. Both sync across devices. <strong>Settings → Creative</strong> controls whether snippets show their source path and a reveal action.</p>
+<p>See the [Bookmarks and snippets](#bookmarks-and-snippets) section — the short version: bookmark whole pages, save selected passages as snippets, and both sync across devices.</p>
+<h2 id="bookmarks-and-snippets">Bookmarks and snippets</h2>
+<p>Two ways to keep what matters one tap away — a whole page, or a single passage inside one.</p>
+<h3>Bookmarks: whole pages and folders</h3>
+<p>Any note or folder can be bookmarked from its long-press or right-click menu, or from the bookmark button while a note is open. The bookmarks list opens from the toolbar and takes you straight back — a character sheet you check constantly, the chapter you&#x27;re revising, the folder for the current trip.</p>
+<p>Bookmarks sync through your files, so the set is the same on iPhone, iPad and Mac. Recents stay per-device on purpose: what you touched last on your phone isn&#x27;t what you touched last at your desk.</p>
+<h3>Snippets: passages, not pages</h3>
+<p>Select text in any note and choose <strong>Bookmark Selection</strong>. That saves the passage as a <em>snippet</em> — literally a snippet of writing: a pointer to those lines inside their document, not a copy of them. Opening a snippet jumps to the note and highlights the passage, so a line of research, a description you want to keep consistent, or the exact paragraph you keep citing is always one tap away — without hunting through the page it lives in.</p>
+<p>When you open a document that has snippets, they surface in a bar at the bottom — every passage you&#x27;ve marked in it, listed, tappable. Mark the quotable lines in a source once, and every later visit starts from them. This is the &quot;cite the passage, not the file&quot; half of the Library: the shelf holds the source, the snippets hold the exact sentences you took from it.</p>
+<p><strong>Settings → Creative</strong> controls whether snippets show their source path and a reveal action.</p>
 <h2 id="images">Images</h2>
 <h3>Adding one</h3>
 <ul>
