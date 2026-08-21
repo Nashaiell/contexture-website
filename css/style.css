@@ -31,8 +31,11 @@ a:hover{color:var(--amber-light)}
 .section-deep{background:var(--brown-deep);color:var(--cream)}
 .section-cream{background:var(--cream-dark)}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,12,4,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,105,30,0.2);padding:0 24px}
+/* NAV — scoped to the site header (a direct child of body). The guide page
+   embeds the user manual, which contains its OWN <nav> (the table of
+   contents); a bare `nav` selector painted that TOC as a fixed brown panel
+   pinned over the whole page. Never style bare element selectors here. */
+body > nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,12,4,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,105,30,0.2);padding:0 24px}
 .nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
 .nav-logo{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:bold;color:#E6D3B3} /* app brandBrown (dark scheme): chocolate reads as mocha on dark */
 .nav-logo img{width:30px;height:30px;border-radius:7px}
@@ -154,6 +157,8 @@ footer ul a:hover{color:var(--amber)}
   .nav-burger{display:flex}
   nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--brown-deep);padding:20px 24px;gap:18px;border-bottom:1px solid rgba(212,105,30,0.2)}
   nav.open .nav-cta{display:block;text-align:center;margin:0 24px 20px}
+  /* .nav-links / .nav-cta only exist in the site header, so these class-
+     scoped rules can keep the short `nav.open` form safely. */
   .deep-feature,.about-grid,.support-grid{grid-template-columns:1fr;gap:32px}
   .deep-feature.reverse .df-text{order:1}
   .deep-feature.reverse .df-visual{order:2}

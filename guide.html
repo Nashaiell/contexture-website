@@ -15,32 +15,21 @@
   --bg:#FBF8F4; --panel:#F5F0EA; --code:#F0EAE1;
   --brand-gold:#D08830; --brand-brown:#2A1A0D;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ink:#EDE7E0; --muted:#A79E95; --rule:#3A3430;
-    --bg:#1C1917; --panel:#242020; --code:#282320;
-    --journal:#E0A344; --library:#8798BC; --accent:#CC94A8;
-    --brand-gold:#E8A048; --brand-brown:#E6D3B3;
-  }
-}
+/* No dark-scheme override here: the site itself has no dark mode — its body
+   is always cream — so flipping the manual's ink to near-white produced
+   white-on-cream text for anyone whose OS is set to dark. */
 #manual * { box-sizing:border-box; }
-#manual html { scroll-behavior:smooth; }
-#manual body {
-  margin:0; background:var(--bg); color:var(--ink);
-  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Georgia,serif;
-  -webkit-font-smoothing:antialiased;
-}
-#manual .wrap { display:grid; grid-template-columns:262px minmax(0,1fr); gap:56px;
-        max-width:1160px; margin:0 auto; padding:0 28px; }
-#manual nav { position:sticky; top:0; align-self:start; max-height:100vh;
-      overflow-y:auto; padding:40px 0 60px; }
-#manual nav .brand { font-weight:700; font-size:19px; letter-spacing:-.01em; margin-bottom:2px; color:var(--brand-brown); }
-#manual nav .brand span { color:var(--brand-gold); } /* Con[Text]ure — matches AppTheme.brandGold/brandBrown */
-#manual nav .sub { color:var(--muted); font-size:13px; margin-bottom:22px;
-           padding-bottom:16px; border-bottom:1px solid var(--rule); }
-#manual nav a { display:block; padding:6px 12px; margin-left:-12px; color:var(--muted);
-        text-decoration:none; font-size:14.5px; border-radius:7px; }
-#manual nav a:hover { color:var(--ink); background:var(--panel); }
+/* The manual's TOC is a "Contents" panel at the top of the article, not a
+   sidebar: #manual .wrap is display:block on this page, and the site header
+   already owns position:fixed. Keep this nav in normal flow. */
+#manual nav { position:static; max-height:none; overflow:visible;
+      background:var(--panel); border:1px solid var(--rule);
+      border-radius:14px; padding:24px 28px 18px; margin:0 0 12px; }
+#manual nav .brand { font-weight:700; font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px; color:var(--muted); }
+#manual nav a { display:inline-block; padding:5px 13px; margin:0 6px 8px 0;
+        color:var(--ink); background:var(--bg); border:1px solid var(--rule);
+        text-decoration:none; font-size:14px; border-radius:100px; }
+#manual nav a:hover { color:#fff; background:var(--creative); border-color:var(--creative); }
 #manual main { padding:40px 0 120px; min-width:0; }
 #manual h1 { font-size:42px; line-height:1.15; letter-spacing:-.022em; margin:.2em 0 .1em; }
 #manual h1 + p em { font-size:18px; }
@@ -64,30 +53,31 @@
 #manual blockquote p:last-child { margin-bottom:0; }
 #manual .tw { overflow-x:auto; margin:1.2em 0; }
 #manual table { border-collapse:collapse; width:100%; font-size:15.5px; }
-#manual th,td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule);
+#manual th,#manual td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule);
         vertical-align:top; }
 #manual th { font-size:12.5px; text-transform:uppercase; letter-spacing:.06em;
      color:var(--muted); font-weight:600; }
 #manual tbody tr:last-child td { border-bottom:0; }
+/* Contents chips jump to h2 anchors — keep them clear of the fixed header. */
+#manual h2[id] { scroll-margin-top: 84px; }
 @media (max-width:860px) {
-  .wrap { grid-template-columns:1fr; gap:0; }
-  nav { position:static; max-height:none; padding:28px 0 18px;
-        border-bottom:1px solid var(--rule); }
-  nav .sub { border-bottom:0; padding-bottom:0; margin-bottom:14px; }
-  nav a { display:inline-block; margin:0 6px 6px 0; }
-  main { padding-top:28px; }
-  h1 { font-size:33px; }
-  h2 { font-size:24px; }
+  /* Everything here MUST stay #manual-scoped: a bare `nav` in this block
+     once stripped position:fixed from the SITE header on phones. */
+  #manual h1 { font-size:33px; }
+  #manual h2 { font-size:24px; }
+  #manual nav { padding:18px 20px 12px; }
 }
 @media print {
-  nav { display:none; }
-  .wrap { display:block; max-width:none; }
-  h2 { page-break-after:avoid; }
-  pre, table, blockquote { page-break-inside:avoid; }
+  body > nav, #manual nav { display:none; }
+  #manual .wrap { display:block; max-width:none; }
+  #manual h2 { page-break-after:avoid; }
+  #manual pre, #manual table, #manual blockquote { page-break-inside:avoid; }
 }
 
-#manual { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+/* 64px fixed site header + breathing room. */
+#manual { max-width: 860px; margin: 0 auto; padding: 104px 24px 80px; }
 #manual .wrap { display: block; }
+#manual main { padding-top: 0; }
 </style>
 </head>
 <body>
@@ -107,8 +97,11 @@
 </nav>
 <div id="manual">
 <div class="wrap">
+<main>
+<h1>ConTexture — User Manual</h1>
+<p><em>A writing app that keeps your work in plain Markdown files you own.</em></p>
 <nav>
-  <div class="brand">User <span>Manual</span></div>
+  <div class="brand">Contents</div>
   <a href="#what-contexture-is">What ConTexture is</a>
   <a href="#where-your-files-live">Where your files live</a>
   <a href="#getting-around-the-three-contexts">Getting around: the three contexts</a>
@@ -127,9 +120,6 @@
   <a href="#keyboard-shortcuts">Keyboard shortcuts</a>
   <a href="#a-note-on-file-safety">A note on file safety</a>
 </nav>
-<main>
-<h1>ConTexture — User Manual</h1>
-<p><em>A writing app that keeps your work in plain Markdown files you own.</em></p>
 <h2 id="what-contexture-is">What ConTexture is</h2>
 <p>ConTexture is a writing app for Mac, iPad and iPhone built on one idea: <strong>your writing should outlive the app you wrote it in.</strong></p>
 <p>Every note is a plain Markdown file in a folder you can open in Finder. There is no proprietary database, no export step to get your work out, and nothing that stops you opening the same folder in Obsidian, iA Writer, or TextEdit. If ConTexture disappeared tomorrow, your writing would be exactly where you left it.</p>
