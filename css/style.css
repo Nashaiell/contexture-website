@@ -166,3 +166,10 @@ footer ul a:hover{color:var(--amber)}
   .footer-bottom{flex-direction:column;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+
+/* screenshots */
+.hero-shot{margin:48px auto 0;max-width:1040px}
+.hero-shot img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.08)}
+.df-visual:has(.df-shot){padding:0;background:none;border:none;min-height:0}
+.df-shot{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.08)}
+.card-shot{width:100%;height:auto;display:block;border-radius:10px;margin-top:18px;border:1px solid var(--cream-dark)}
