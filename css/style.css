@@ -79,6 +79,7 @@ body > nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(26,12
 .deep-feature:last-child{border-bottom:none}
 .deep-feature.reverse .df-text{order:2}
 .deep-feature.reverse .df-visual{order:1}
+.badge-mac{display:inline-block;margin-left:8px;padding:1px 8px 2px;font-size:0.62em;font-weight:600;letter-spacing:0.06em;vertical-align:middle;color:var(--text-muted);border:1px solid rgba(200,168,130,0.35);border-radius:999px;white-space:nowrap;text-transform:none}
 .df-eyebrow{display:inline-block;color:var(--amber);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
 .df-text h2{color:var(--cream);margin-bottom:14px}
 .df-text p{color:rgba(250,246,240,0.68);margin-bottom:12px}
