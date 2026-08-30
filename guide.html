@@ -177,7 +177,7 @@ Documents/
 <p>A daily note holds three things:</p>
 <ol>
 <li><strong>Events</strong> — from Apple Calendar and Google Calendar, collapsible, each able to hold its own notes</li>
-<li><strong>Tasks</strong> — reminders due that day, tickable in place</li>
+<li><strong>Tasks</strong> — your own task lines, written as plain text; the sidebar carries the full day&#x27;s list</li>
 <li><strong>Notes</strong> — free writing, the main body</li>
 </ol>
 <p>Events and tasks are stored as HTML comments, invisible in any other Markdown editor:</p>
@@ -204,6 +204,16 @@ The day&#x27;s writing.
 <h3>Calendar and tasks</h3>
 <p>Grant access and events appear automatically. <strong>Settings → Journal</strong> controls which calendars and reminder lists are included, and whether events, tasks, overdue items and week numbers show at all.</p>
 <p>Ticking a task in a daily note completes the underlying reminder, and completing it in Reminders updates the note. It&#x27;s a two-way mirror, not a copy.</p>
+
+<h3>Writing tasks as plain text</h3>
+<p>Type a task anywhere in a daily note and it becomes a reminder:</p>
+<pre><code>- [ ] Call the bank</code></pre>
+<p>Add a due date inside the line with <code>@due(...)</code> — plain language works:</p>
+<pre><code>- [ ] Call the bank @due(tomorrow 3pm)
+- [ ] Pay rent @due(sept 1)</code></pre>
+<p>The reminder is created with a clean title (the <code>@due</code> part is stripped) and the date you wrote. Edit the token and the reminder&#x27;s date follows.</p>
+<p><strong>One thing to understand:</strong> your note is plain text, and ConTexture never rewrites your sentences. If a line carries an <code>@due(...)</code> token, that token is the boss of the due date — change the date somewhere else (the sidebar, the Reminders app) and the text in your note stays as you wrote it, so the token will put the date back on the next sync. If you&#x27;d rather manage a task&#x27;s date outside the note, just delete the token from the line once: the reminder keeps its date, and from then on the sidebar or Reminders owns it.</p>
+<p>To edit a task or event without leaving your note, <strong>right-click it in the calendar pane</strong> (long-press on iPhone and iPad) and choose Edit — title, notes, date and time.</p>
 <h3>In Focus</h3>
 <p>A working set of notes you&#x27;re actively using — closer to a pinboard than to a folder. Notes are never moved; focus is a flag plus an ordering, so a note keeps its home folder no matter what.</p>
 <p>Ways in: press <strong>⌘⇧F</strong> in any Journal note, use the note&#x27;s <strong>⋯</strong> menu, or <strong>drag a note onto the In Focus panel</strong> (the bar under Today in the calendar pane swaps between Events &amp; Tasks and In Focus). Assign a loose date with <strong>⌘⇧D</strong> — it&#x27;s stored invisibly inside the note, so it survives editing in any other app.</p>
