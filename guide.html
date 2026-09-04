@@ -3,10 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image" content="https://contextureapp.app/img/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
 <title>Guide &mdash; ConTexture</title>
 <meta name="description" content="The complete ConTexture user manual: the three contexts, the Library, In Focus, the Apple Watch app, and everything in between.">
 <link rel="stylesheet" href="css/style.css">
@@ -102,7 +98,7 @@
       <li><a href="community.html">Community</a></li>
       <li><a href="support.html">Support</a></li>
     </ul>
-    <a class="nav-cta" href="community.html#beta">Join the beta</a>
+    <a class="nav-cta" href="index.html#download">Download</a>
     <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -164,6 +160,14 @@ Documents/
 </tbody></table></div>
 <p>The difference matters. Creative is organised by <em>what you&#x27;re writing</em>, Journal by <em>when</em>, Library by <em>what it&#x27;s about</em>. A character sheet used by three books belongs in the Library. A chapter belongs to its project. Tuesday belongs to Tuesday.</p>
 <p><strong>Drawing Board</strong> is not a fourth context — it&#x27;s a feature you reach from inside Creative or Journal. See [Drawing Board](#drawing-board).</p>
+<h3>Home</h3>
+<p>Home is where you choose, or pick up where you were.</p>
+<ul>
+<li><strong>The three contexts</strong>, side by side on Mac and iPad, stacked on iPhone</li>
+<li><strong>Capture</strong>, under the title — get something down without choosing first</li>
+<li><strong>Recent</strong> — a strip of the last things you opened, with a preview of each: the opening lines of a page, the first page of a PDF, the day&#x27;s agenda for a daily note. Four on Mac, three on iPhone. It hides itself when there&#x27;s nothing to show</li>
+<li><strong>Inbox</strong> lives in the toolbar as a pill with a count, beside Settings. It&#x27;s status, not a destination — grey when empty, badged when something&#x27;s waiting</li>
+</ul>
 <h3>Switching</h3>
 <ul>
 <li><strong>Bottom bar</strong> — Creative, Journal, Library, and Capture</li>
@@ -177,7 +181,7 @@ Documents/
 <p>A daily note holds three things:</p>
 <ol>
 <li><strong>Events</strong> — from Apple Calendar and Google Calendar, collapsible, each able to hold its own notes</li>
-<li><strong>Tasks</strong> — your own task lines, written as plain text; the sidebar carries the full day&#x27;s list</li>
+<li><strong>Tasks</strong> — reminders due that day, tickable in place</li>
 <li><strong>Notes</strong> — free writing, the main body</li>
 </ol>
 <p>Events and tasks are stored as HTML comments, invisible in any other Markdown editor:</p>
@@ -204,16 +208,6 @@ The day&#x27;s writing.
 <h3>Calendar and tasks</h3>
 <p>Grant access and events appear automatically. <strong>Settings → Journal</strong> controls which calendars and reminder lists are included, and whether events, tasks, overdue items and week numbers show at all.</p>
 <p>Ticking a task in a daily note completes the underlying reminder, and completing it in Reminders updates the note. It&#x27;s a two-way mirror, not a copy.</p>
-
-<h3>Writing tasks as plain text</h3>
-<p>Type a task anywhere in a daily note and it becomes a reminder:</p>
-<pre><code>- [ ] Call the bank</code></pre>
-<p>Add a due date inside the line with <code>@due(...)</code> — plain language works:</p>
-<pre><code>- [ ] Call the bank @due(tomorrow 3pm)
-- [ ] Pay rent @due(sept 1)</code></pre>
-<p>The reminder is created with a clean title (the <code>@due</code> part is stripped) and the date you wrote. Edit the token and the reminder&#x27;s date follows.</p>
-<p><strong>One thing to understand:</strong> your note is plain text, and ConTexture never rewrites your sentences. If a line carries an <code>@due(...)</code> token, that token is the boss of the due date — change the date somewhere else (the sidebar, the Reminders app) and the text in your note stays as you wrote it, so the token will put the date back on the next sync. If you&#x27;d rather manage a task&#x27;s date outside the note, just delete the token from the line once: the reminder keeps its date, and from then on the sidebar or Reminders owns it.</p>
-<p>To edit a task or event without leaving your note, <strong>right-click it in the calendar pane</strong> (long-press on iPhone and iPad) and choose Edit — title, notes, date and time.</p>
 <h3>In Focus</h3>
 <p>A working set of notes you&#x27;re actively using — closer to a pinboard than to a folder. Notes are never moved; focus is a flag plus an ordering, so a note keeps its home folder no matter what.</p>
 <p>Ways in: press <strong>⌘⇧F</strong> in any Journal note, use the note&#x27;s <strong>⋯</strong> menu, or <strong>drag a note onto the In Focus panel</strong> (the bar under Today in the calendar pane swaps between Events &amp; Tasks and In Focus). Assign a loose date with <strong>⌘⇧D</strong> — it&#x27;s stored invisibly inside the note, so it survives editing in any other app.</p>
@@ -232,7 +226,15 @@ The day&#x27;s writing.
 <p>These folders are a starting point, not a rule. Rename them, delete them, add your own.</p>
 <p>There are also <strong>genre templates</strong> (Drama, Mystery, Fantasy, Non-Fiction, Science Fiction, Historical) in <strong>Settings → Creative → Templates</strong>, each seeding a project with a cover page and a genre-appropriate starter note.</p>
 <h3>The binder</h3>
-<p>The sidebar is your project&#x27;s structure, nested as deeply as you like. Drag to reorder or move between folders. <strong>Settings → General</strong> controls whether folders sort above notes.</p>
+<p>The sidebar is your project&#x27;s structure, nested as deeply as you like. <strong>Manuscript</strong> carries a spine stripe — it&#x27;s the book; everything else is material. <strong>Settings → General</strong> controls whether folders sort above notes.</p>
+<p><strong>Drawing Board</strong> and <strong>Templates</strong> sit together under <strong>Tools</strong>: the two things in a project that are neither manuscript nor material.</p>
+<h3>Drag and drop</h3>
+<p>It works the way Finder does:</p>
+<ul>
+<li><strong>Drop on a folder</strong> and it goes in that folder. The folder outlines itself while you hover</li>
+<li><strong>Drop anywhere else</strong> — on a page, on the Notes heading, in the space below the rows — and it goes in the project root. The whole sidebar outlines to say so</li>
+</ul>
+<p>Drag within the sidebar to reorder or move between folders; drag from Finder to import.</p>
 <h3>New folders and notes</h3>
 <ul>
 <li><strong>+ → New Page</strong> — a note in the current project</li>
@@ -264,8 +266,17 @@ The day&#x27;s writing.
 <li><strong>One canonical source across books</strong></li>
 <li><strong>Cross-book consistency</strong> — which books a character appears in, and what you said about something in book one that contradicts book three</li>
 </ul>
-<h3>Library folders</h3>
-<p>Alongside the shelves: References Inbox, Sources and Citations, Web Links and Bookmarks, Read Later, and Code.</p>
+<h3>Browsing the Library</h3>
+<p>The Library isn&#x27;t somewhere you write, so it doesn&#x27;t look like the places you do. Open it and you get a shelf, not a file list.</p>
+<ul>
+<li><strong>Shelves</strong> — the role shelves, one card each. The bars along the bottom of a card are its documents, sized by length, so a full shelf looks full and an empty one looks empty</li>
+<li><strong>Collections</strong> — the older folders: Sources and Citations, Web Links and Bookmarks, Read Later, Code. Empty ones shrink to a text button so they stay findable without taking up a card</li>
+<li><strong>Folders</strong> — anything you made yourself</li>
+<li><strong>Pages</strong> — loose documents at the root, the unfiled pile</li>
+</ul>
+<p>Open a shelf and every document shows as a page with its opening lines, or a PDF or image as its own first page. Under each is <strong>which projects it belongs to</strong> — one book named, several counted. That&#x27;s the one thing a file browser can&#x27;t show you, and it&#x27;s the point of the Library.</p>
+<p>Three ways to look, from the control beside <strong>+</strong>: <strong>Gallery</strong> (the shelf), <strong>Compact</strong> (smaller cards, for scanning a long shelf), and <strong>List</strong> (dense rows with name, date and project — for when you already know what you want). The choice is remembered.</p>
+<p>The <strong>‹</strong> button or ⌘[ goes up a level. Open any document and the familiar sidebar comes back beside it.</p>
 <h2 id="writing-the-editor">Writing: the editor</h2>
 <p>The editor is plain Markdown with live styling — headings look like headings while staying <code>#</code> on disk.</p>
 <h3>Preview</h3>
@@ -391,12 +402,14 @@ The day&#x27;s writing.
 <tr><td>⌘⇧D</td><td>Assign a date</td></tr>
 <tr><td>⌥⇧⌘T</td><td>Task report</td></tr>
 <tr><td>⌘F</td><td>Find</td></tr>
+<tr><td>⌘[</td><td>Library: up one level</td></tr>
 </tbody></table></div>
 <h2 id="a-note-on-file-safety">A note on file safety</h2>
 <p>ConTexture is built so that the worst case is recoverable.</p>
 <ul>
 <li>Notes are <strong>read from disk</strong> when opened, never from a cache that might be stale</li>
-<li>A save that loses more than half a document writes a timestamped <code>.bak</code> alongside it</li>
+<li>A save that loses more than half a document — or drops <strong>any</strong> task line, however small the file — writes a timestamped <code>.bak</code> alongside it</li>
+<li>Renaming a document or folder keeps its Library links and In Focus entry pointing at the new name</li>
 <li>Deleted images are <strong>moved</strong>, not destroyed</li>
 <li>Folder structure on disk mirrors what you see, so anything can be found and fixed in Finder</li>
 </ul>
