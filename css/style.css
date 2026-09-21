@@ -35,12 +35,23 @@ p{margin-bottom:1rem}
 a{color:var(--gold-deep);text-decoration:none}
 a:hover{color:var(--gold)}
 /* On the chocolate sections the deep gold disappears; take the icon gold
-   there instead. Same colour, the end of the gradient that reads. */
-.hero a,.section-dark a,.section-deep a,.page-hero a,.cta-band a,
-footer a,.about-aside a,.deep-feature a{color:var(--gold-light)}
-.hero a:hover,.section-dark a:hover,.section-deep a:hover,.page-hero a:hover,
-.cta-band a:hover,footer a:hover,.about-aside a:hover,
-.deep-feature a:hover{color:var(--gold-pale)}
+   there instead. Same colour, the end of the gradient that reads.
+
+   `:not([class*="btn"])` is load-bearing. The buttons are <a> elements, so
+   `.cta-band a` (0,1,1) outranks `.btn-primary` (0,1,0) and repainted the
+   label gold ON a gold button — invisible. Excluding them here is better
+   than fighting it with more specific button rules, because the next
+   container added to this list would reintroduce the same bug. */
+.hero a:not([class*="btn"]),.section-dark a:not([class*="btn"]),
+.section-deep a:not([class*="btn"]),.page-hero a:not([class*="btn"]),
+.cta-band a:not([class*="btn"]),footer a:not([class*="btn"]),
+.about-aside a:not([class*="btn"]),
+.deep-feature a:not([class*="btn"]){color:var(--gold-light)}
+.hero a:not([class*="btn"]):hover,.section-dark a:not([class*="btn"]):hover,
+.section-deep a:not([class*="btn"]):hover,.page-hero a:not([class*="btn"]):hover,
+.cta-band a:not([class*="btn"]):hover,footer a:not([class*="btn"]):hover,
+.about-aside a:not([class*="btn"]):hover,
+.deep-feature a:not([class*="btn"]):hover{color:var(--gold-pale)}
 .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
 .section{padding:96px 0}
 .section-dark{background:var(--choc);color:var(--cream)}
